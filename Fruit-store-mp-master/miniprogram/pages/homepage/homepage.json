@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "AO奥品汇义堂店",
+  "usingComponents": {
+    "mySearch":"/components/search/search",
+    "swiper": "/components/swiper/swiper"
+  }
+}

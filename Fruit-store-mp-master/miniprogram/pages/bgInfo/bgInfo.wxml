@@ -1,0 +1,98 @@
+<view class='bgInfo'>
+  <!-- 选项卡 -->
+  <view class='tapCard'>
+    <view class="addCard {{cardNum === 1 ? 'tapOn':'tapOff'}} " bindtap='tapTo1'>添加商品</view>
+    <view class="delCard {{cardNum === 2 ? 'tapOn':'tapOff'}} " bindtap='tapTo2'>商品管理</view>
+    <view class="deliver {{cardNum === 3 ? 'tapOn':'tapOff'}} " bindtap='tapTo3'>分类管理</view>
+  </view>
+
+  <!-- 添加商品 -->
+  <view class='addFruit' wx:if="{{cardNum === 1}}">
+    <view bindtap='selectImg' class='selectImg'>选择图片</view>
+    <view class='InfoBottom'></view>
+    <view class='fruit-board'>
+      <form bindsubmit='addFruitInfo' bindreset='resetFruitInfo'>
+        <view>商品信息</view>
+        <view style='height:40rpx;'></view>
+        <input name='fruitID' placeholder='商品编号'></input>
+        <input name='name' placeholder='水果名称'></input>
+        <input name='iLike' placeholder='点赞数'></input>
+        <input name='price' placeholder='价格'></input>
+        <input name='unit' placeholder='单位'></input>
+        <input name='purchaseFreq' placeholder='访问量'></input>
+        <textarea name='detail' placeholder='详细信息'></textarea>
+        <!-- <textarea name='service' placeholder='售后服务'></textarea> -->
+        <input name='myClass' placeholder='今日特惠（1或0）'></input>
+        <input name='recommend' placeholder='店主推荐（1或0）'></input>
+        <view class='btn'>
+          <button form-type='submit'>确定</button>
+          <button form-type='reset'>重置</button>
+        </view>
+      </form>
+    </view>
+    <view class='InfoBottom'></view>
+  </view>
+
+
+  <!-- 商品管理 -->
+  <view class='manageInfo' wx:if="{{cardNum === 2}}">
+    <view bindtap='addGood' class='myBtn'>添加商品</view>
+    <view wx:if="{{hasList}}">
+
+      <!-- 选项卡 -->
+      <view class="cart-box">
+        <!-- 商品卡片 -->
+        <view class="cart-list" wx:for="{{goodList}}" wx:key="{{index}}">
+
+          <!-- 商品图片 -->
+          <navigator url="../detail/detail?id={{item.fruitID}}">
+            <image class="cart-thumb" src="{{item.imgUrl}}"></image>
+          </navigator>
+          <!-- 名称 -->
+          <text class="cart-pro-name">{{item.name}}</text>
+          <!-- 价格 -->
+          <text class="cart-pro-price">￥{{item.price}}</text>
+
+          <!-- 删除 -->
+          <text class="cart-del" bindtap="deleteList" data-index="{{index}}" data-_id="{{item._id}}">×</text>
+        </view>
+      </view>
+
+    </view>
+
+    <!-- 无商品 -->
+    <view wx:else>
+
+      <view class="cart-no-data">暂无商品，快去添加吧~</view>
+      <navigator url='/pages/homepage/homepage' open-type="switchTab">
+        <view class='addBtn' bindtap='addGood'>添加商品</view>
+      </navigator>
+
+    </view>
+
+
+
+</view>
+
+
+
+<!-- 商品分类 -->
+<view class='addFruit' wx:if="{{cardNum === 3}}">
+
+  <view class='fruit-board'>
+    <form bindsubmit='addTypeInfo' bindreset='resetTypeInfo'>
+      <view>分类信息</view>
+      <view style='height:40rpx;'></view>
+      <input name='name' placeholder='分类名称'></input>
+      <input name='myclass' placeholder='排序号'></input>
+
+      <view class='btn'>
+        <button form-type='submit'>添加</button>
+        <button form-type='reset'>重置</button>
+      </view>
+    </form>
+  </view>
+  <view class='InfoBottom'></view>
+</view>
+
+</view>

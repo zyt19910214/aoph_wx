@@ -1,0 +1,72 @@
+<view class='myHomePage' wx:if="{{isShow}}">
+  <!--miniprogram/pages/homepage/homepage.wxml-->
+
+  <!--搜索框-->
+  <mySearch></mySearch>
+
+  <!-- 轮播图 -->
+  <view style='height:510rpx;width:100%'>
+    <swiper></swiper>
+  </view>
+
+  <!-- 分类展示 -->
+  <view class='type-container'>
+    <scroll-view class="type-navbar" scroll-x="true" scroll-into-view="{{toView}}" scroll-top="{{activeTypeId}}">
+      <view class='type-item' id='t{{item.id}}' wx:for="{{typeCat}}" wx:key="id">
+        <view id='{{item.id}}' class="type-name {{activeTypeId === item.id ? 'type-item-on' : ''}}" bindtap='typeSwitch'>
+          {{item.name}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- 商品图 -->
+  <view class='extra'></view>
+  <view class='fruit-container'>
+    <!-- 商品卡片信息 -->
+    <block wx:for="{{fruitInfo}}" wx:key='fruitID'>
+      <view class='fruit-item' bindtap='tapToDetail' data-fID="{{item.id}}">
+        <!-- 图片 -->
+        <view class='fruit-image'>
+          <image src='{{item.pic}}' mode='aspectFill'></image>
+        </view>
+        <!-- 其他信息 -->
+        <view class='fruit-info'>
+          <view class='line1'>
+            <!-- 名称 -->
+            <text class='name'>{{item.name}}</text>
+          </view>
+          <view class='line2'>
+            <!-- 价格 -->
+            <view class='price'>
+              <text>￥{{item.minPrice}}</text>
+              <text class='unit'>/元</text>
+            </view>
+             <view class='price' style="color:#aaa;text-decoration:line-through">
+              <text>￥{{item.originalPrice}}</text>
+              <text class='unit'>/元</text>
+            </view>
+            <!-- 收藏 -->
+            <!-- <view class='like-image' catchtap="addCartByHome" data-_id="{{item._id}}"> -->
+
+           <!-- <image src='../../images/icon/love.png' mode='aspectFit' style="width=2prx" catchtap="addLoveByHome" data-_id="{{item.id}}"></image>
+            <view class='sc'>
+              <text>许愿</text>
+            </view> -->
+       
+          
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部 -->
+  <view class='homeBottom'>
+    <view class='bottomLine'></view>
+    <view class='bottomWord'>品质消费,好而不贵。</view>
+    <view class='bottomLine'></view>
+  </view>
+
+</view>

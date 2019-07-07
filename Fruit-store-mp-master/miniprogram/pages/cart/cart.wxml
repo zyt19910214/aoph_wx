@@ -1,0 +1,53 @@
+<!--miniprogram/pages/cart.wxml-->
+<view class="main">
+  <view class="header">
+    <!-- <image src="{{thumb}}" class="thumb"></image> -->
+    <view class="thumb">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class='nickname'>
+      <open-data type="userNickName"></open-data>
+    </view>
+    <!-- <text class="nickname">{{nickname}}</text> -->
+  </view>
+  <view wx:if="{{hasList}}">
+
+    <!-- 选项卡 -->
+    <view class="cart-box">
+      <!-- 商品卡片 -->
+      <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
+        <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
+          <!-- 商品图片 -->
+          <navigator url="../detail/detail?_id={{item.basicInfo.id}}">
+            <image class="cart-thumb" src="{{item.basicInfo.pic}}"></image>
+          </navigator>
+          <!-- 名称 -->
+          <view class="cart-pro-name">{{item.basicInfo.name}}</view>
+          <!-- 价格 -->
+          <text class="cart-pro-price">￥{{item.basicInfo.minPrice}}</text>
+           <!-- 状态 -->
+          <text class="cart-pro-status">在售</text>
+        </view>
+        <!-- 删除 -->
+        <view data-index="{{index}} " bindtap = "deleteList" class="inner del" data-index="{{index}}" data-_id="{{item.basicInfo.id}}" >删除</view>
+    
+      </view>
+    </view>
+
+
+
+  </view>
+
+  <!-- 无收藏 -->
+  <view wx:else>
+    <view class="title-box">
+      小傻瓜，还没找到自己心仪的商品吗～
+    </view>
+    <navigator url='/pages/homepage/homepage' open-type="switchTab">
+      <view class="to-index-btn" bindtap="toIndexPage">
+        去逛逛
+      </view>
+    </navigator>
+  </view>
+
+</view>

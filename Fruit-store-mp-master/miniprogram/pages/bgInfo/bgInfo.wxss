@@ -1,0 +1,265 @@
+Page {
+  background: #fff5ee;
+}
+
+/* 选项卡 */
+
+.tapCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  height: 50rpx;
+  margin: 0 10rpx;
+}
+
+.tapCard view {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 26rpx;
+  line-height: 50rpx;
+  border-radius: 10rpx 10rpx 0 0;
+  margin: 0 3rpx;
+}
+
+.tapOn {
+  background-color: rgb(255, 140, 58);
+  color: rgb(255, 255, 255);
+}
+
+.tapOff {
+  background-color: rgb(255, 205, 169);
+  color: white;
+}
+
+/* 选择图片 */
+
+.selectImg {
+  text-align: center;
+  font-size: 28rpx;
+  position: absolute;
+  top: 228rpx;
+  left: 48rpx;
+  color: grey;
+  z-index: 1;
+}
+
+/* 添加水果 */
+
+.fruit-board {
+  background: white;
+  margin: 30rpx;
+  margin-bottom: 0;
+  border: 1px solid white;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+
+.fruit-board form view {
+  text-align: center;
+  color: rgb(128, 111, 80);
+  font-size: 35rpx;
+  border-bottom: 0.5rpx rgb(211, 211, 211) solid;
+  padding: 20rpx 0;
+}
+
+.fruit-board form input {
+  padding: 15rpx 0;
+  margin: 0 15rpx;
+  border-bottom: 0.5rpx rgb(211, 211, 211) solid;
+}
+
+.fruit-board form textarea {
+  padding: 15rpx 0;
+  margin: 0 15rpx;
+  border-bottom: 0.5rpx rgb(211, 211, 211) solid;
+}
+
+.fruit-board form button {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin: 10rpx 20rpx;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.InfoBottom {
+  height: 30rpx;
+  background: #fff5ee;
+}
+
+/* 删除水果 */
+
+.deleteFruit {
+  width: 700rpx;
+  margin: 20rpx 25rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myInput {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 400rpx;
+  font-size: 28rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.myBtn {
+  width: 100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  background-color: red;
+  text-align: center;
+  border-radius: 10rpx;
+  color: white;
+}
+
+
+.cart-box{
+  padding-bottom: 100rpx;
+  color: grey;
+  font-size: 22rpx;
+}
+.cart-list{
+  position: relative;
+  padding: 20rpx 20rpx 20rpx 285rpx;
+  height: 185rpx;
+  border-bottom: 1rpx solid #e9e9e9;
+}
+.cart-list .cart-pro-select{
+  position: absolute;
+  left: 20rpx;
+  top: 90rpx;
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.cart-list .cart-thumb{
+  position: absolute;
+  top: 20rpx;
+  left: 70rpx;
+  height: 185rpx;
+  width: 205rpx;
+  border: 1rpx;
+}
+.cart-list .cart-pro-name{
+  padding-top: 15rpx;
+  padding-left: 35rpx;
+  font-size: 25rpx;
+  color: black;
+  display: inline-block;
+  width: 300rpx;
+  height: 105rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+.cart-list .cart-pro-price{
+  padding: 15rpx;  
+  font-size: 30rpx;
+  color: red;  
+  display: inline-block;
+  float: right;
+  height: 105rpx;
+  line-height: 50rpx;
+}
+.cart-list .cart-count-box{
+  position: absolute;
+  left: 285;
+  bottom: 20rpx;
+  width: 250rpx;
+  height: 80rpx;
+}
+.cart-list .cart-count-box text{
+  line-height: 80rpx;
+  text-align: center;
+  padding: 15rpx;
+}
+.cart-count-num{
+  font-size: 30rpx;
+}
+.cart-count-down,.cart-count-add{
+  font-size: 44rpx;
+  width: 50rpx;
+  height: 100%;
+}
+.cart-count-num{
+  width: 150rpx;
+  border: rgb(241, 205, 136) 1.5rpx solid;
+  border-radius: 10%;
+}
+.cart-del{
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 44rpx;
+}
+.cart-footer{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  background: #FFF5EE;
+  color: rgb(143, 143, 143);
+}
+.cart-footer .footer-select {
+  width: 200rpx;
+  margin-left: 10rpx;
+}
+.cart-footer icon{
+  padding:25rpx 0 0 20rpx;
+}
+.cart-footer .cart-toatl-price {
+  flex: 1;
+  text-align: right;
+  padding-right: 20rpx;
+}
+.cart-footer .order-icon {
+  color: white;
+  width: 150rpx;
+  background-color: rgb(248, 188, 76);
+  line-height: 70rpx;
+  margin: 15rpx;
+  border-radius: 10rpx;
+  font-size: 25rpx;
+  text-align: center;
+  margin-right: 30rpx;
+}
+
+/* 空收藏 */
+.cart-no-data {
+  text-align: center;
+  color: rgb(143, 142, 142);
+  font-size: 38rpx;
+  margin: 50rpx;
+}
+
+.addtBtn {
+  width: 120rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  font-size: 25rpx;
+  background-color: rgb(250, 193, 87);
+  border-radius: 10rpx;
+  margin: 0 315rpx;
+  text-align: center;
+  color: white;
+}

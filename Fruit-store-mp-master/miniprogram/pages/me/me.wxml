@@ -1,0 +1,44 @@
+<view class="main">
+  <!--展示商铺信息 -->
+  <view class="title-board">
+    <view class="fruit-item">
+      <image src="../../images/icon/title.jpg" class="slide-image" width="600rpx" height="500rpx" />
+    </view>
+    <view class='title'>AO澳品汇义堂店</view>
+  </view>
+  <view class="board">
+
+    <view class="board-item" bindtap="openLocation">
+      <image src="../../images/icon/location.png" />
+      <view class="location" > 山东省临沂市兰山区义堂中心医院东20米路南</view>
+      <view class="navigator-arrow"></view>
+    </view>
+
+    <view class="board-item" bindtap="callPhone">
+      <image src="../../images/icon/phone.png" />
+      <view class="location2" data-phone='15105390367'>15105390367</view>
+      <view class="navigator-arrow"></view>
+    </view>
+
+    <view class="board-item" >
+      <image src="../../images/icon/info.png" />
+      <view >夏季营业时间：早08:00-晚21:30 </view>
+      
+    </view>
+      <view class="board-item" >
+      <image src="../../images/icon/info2.png" />
+      <view >冬季营业时间：早08:30-晚20:30 </view>
+      
+    </view>
+
+  </view>
+</view>
+
+<!-- 后台管理 -->
+<view class="bgInfo {{openid}}" bindtap='goToBgInfo' hidden="{{!(isAdmin >= 0)}}">后台管理</view>
+<!-- 底部 -->
+<view class='homeBottom'>
+  <view class='bottomLine'></view>
+  <view class='bottomWord'>品质消费,好而不贵。</view>
+  <view class='bottomLine'></view>
+</view>
