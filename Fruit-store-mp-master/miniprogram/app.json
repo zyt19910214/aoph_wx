@@ -1,6 +1,7 @@
 {
   "cloud": true,
   "pages": [
+    "pages/specialoffer/specialoffer",
     "pages/homepage/homepage",
     "pages/authentic/index",
     "pages/bgInfo/bgInfo",
@@ -8,6 +9,7 @@
     "pages/me/me",
     "pages/detail/detail"
   ],
+  
   "window": {
     "backgroundColor": "#F0F0F0",
     "backgroundTextStyle": "light",
@@ -20,6 +22,12 @@
     "color": "#878787",
     "backgroundColor": "#FFF5EE",
     "list": [
+      {
+        "pagePath": "pages/specialoffer/specialoffer",
+        "text": "特价商品",
+        "iconPath": "images/tabBar/special-sel.png",
+        "selectedIconPath": "images/tabBar/special.png"
+      },
       {
         "pagePath": "pages/homepage/homepage",
         "text": "商品展示",
@@ -39,5 +47,6 @@
         "selectedIconPath": "images/tabBar/me.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

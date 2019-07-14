@@ -1,17 +1,18 @@
 <view class='myHomePage' wx:if="{{isShow}}">
   <!--miniprogram/pages/homepage/homepage.wxml-->
 
+
   <!--搜索框-->
+  <view class="Search-container">
   <mySearch></mySearch>
-
-  <!-- 轮播图 -->
-  <view style='height:510rpx;width:100%'>
-    <swiper></swiper>
   </view>
+  
 
+ 
   <!-- 分类展示 -->
+
   <view class='type-container'>
-    <scroll-view class="type-navbar" scroll-x="true" scroll-into-view="{{toView}}" scroll-top="{{activeTypeId}}">
+    <scroll-view class="type-navbar" scroll-y="true" scroll-into-view="{{toView}}"  scroll-top="{{activeTypeId}}" >
       <view class='type-item' id='t{{item.id}}' wx:for="{{typeCat}}" wx:key="id">
         <view id='{{item.id}}' class="type-name {{activeTypeId === item.id ? 'type-item-on' : ''}}" bindtap='typeSwitch'>
           {{item.name}}
@@ -22,9 +23,10 @@
 
 
   <!-- 商品图 -->
-  <view class='extra'></view>
+ 
   <view class='fruit-container'>
     <!-- 商品卡片信息 -->
+    <scroll-view class="type-navbar" scroll-y="true" scroll-into-view="{{toView}}"  bindscrolltolower="lower" scroll-top="{{activeTypeId}}" >
     <block wx:for="{{fruitInfo}}" wx:key='fruitID'>
       <view class='fruit-item' bindtap='tapToDetail' data-fID="{{item.id}}">
         <!-- 图片 -->
@@ -35,17 +37,15 @@
         <view class='fruit-info'>
           <view class='line1'>
             <!-- 名称 -->
-            <text class='name'>{{item.name}}</text>
+      
+              <view>{{item.name}}</view>        
+       
           </view>
           <view class='line2'>
             <!-- 价格 -->
-            <view class='price'>
-              <text>￥{{item.minPrice}}</text>
-              <text class='unit'>/元</text>
-            </view>
-             <view class='price' style="color:#aaa;text-decoration:line-through">
-              <text>￥{{item.originalPrice}}</text>
-              <text class='unit'>/元</text>
+            
+             <view class='price'>     
+              ￥{{item.minPrice}}/元
             </view>
             <!-- 收藏 -->
             <!-- <view class='like-image' catchtap="addCartByHome" data-_id="{{item._id}}"> -->
@@ -60,6 +60,7 @@
         </view>
       </view>
     </block>
+     </scroll-view>
   </view>
 
   <!-- 底部 -->

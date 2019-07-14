@@ -18,18 +18,18 @@
       <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
         <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
           <!-- 商品图片 -->
-          <navigator url="../detail/detail?_id={{item.basicInfo.id}}">
-            <image class="cart-thumb" src="{{item.basicInfo.pic}}"></image>
+          <navigator url="../detail/detail?_id={{item.id}}">
+            <image class="cart-thumb" src="{{item.img_url}}"></image>
           </navigator>
           <!-- 名称 -->
-          <view class="cart-pro-name">{{item.basicInfo.name}}</view>
+          <view class="cart-pro-name">{{item.name}}</view>
           <!-- 价格 -->
-          <text class="cart-pro-price">￥{{item.basicInfo.minPrice}}</text>
+          <text class="cart-pro-price">￥{{item.price}}</text>
            <!-- 状态 -->
           <text class="cart-pro-status">在售</text>
         </view>
         <!-- 删除 -->
-        <view data-index="{{index}} " bindtap = "deleteList" class="inner del" data-index="{{index}}" data-_id="{{item.basicInfo.id}}" >删除</view>
+        <view data-index="{{index}} " bindtap = "deleteList" class="inner del" data-index="{{index}}" data-_id="{{item.id}}" >删除</view>
     
       </view>
     </view>

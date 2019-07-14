@@ -15,8 +15,8 @@
     </view>
     <!-- 第二行 -->
     <view class='line2'>
-      <view class='price'>价格:￥{{fruitDetail.basicInfo.minPrice}}</view>
-      <view class='purchaseFreq'>浏览 {{fruitDetail.basicInfo.views}} 次</view>
+      <view class='price'>{{fruitDetail.basicInfo.minPrice}}元</view>
+      <!-- <view class='purchaseFreq'>浏览 {{fruitDetail.basicInfo.views}} 次</view> -->
     </view>
   </view>
 
@@ -40,6 +40,10 @@
     <view class='cart' bindtap='goToCart'  >
       <image src="../../images/tabBar/cart.png" mode='scaleToFill'></image>
       <view>心愿单</view>
+    </view>
+    <view class='cart2' bindtap='callPhone'  >
+      <image src="../../images/icon/server.png" mode='scaleToFill'></image>
+      <view>客服电话</view>
     </view>
   
     <view  wx:if="{{!islove}}" class='addToCart' bindtap='addLoveByDetail' data-_id="{{fruitDetail.basicInfo.id}}">加入心愿单</view>

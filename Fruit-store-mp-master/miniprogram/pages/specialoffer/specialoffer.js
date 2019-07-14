@@ -1,5 +1,3 @@
-// miniprogram/pages/homepage/homepage.js
-
 
 const app = getApp()
 
@@ -12,7 +10,6 @@ Page({
     curPage: 1,
     pageSize: 10,
     loadingMoreHidden: true,
-    typeCat: [],
     activeTypeId:0,
     isShow:false,
     openid: ''
@@ -21,30 +18,21 @@ Page({
    //console.log('页面滑动',e)
   },
 
-  // ------------分类展示切换---------
-  typeSwitch: function(e) {
-    //将当前分类存储到activeTypeId，并将页码置为1，清空已存的商品信息
-    this.setData({
-      activeTypeId: parseInt(e.currentTarget.id),
-      loadingMoreHidden:true,
-      curPage:1,
-      fruitInfo: []
-    });
-    //获取当前类型下的所有数据
-    this.getGoodsList(e.currentTarget.id)
-  },
 
 
   // ---------点击跳转至详情页面-------------
   tapToDetail: function(e) {
+    //console.log('2311122222222222222',e)
     wx.navigateTo({
       url: '../detail/detail?_id=' + e.currentTarget.dataset.fid,
     })
+  
   },
 
 
   // ------------生命周期函数------------
   onLoad: function (options) {
+  
    
   },
 
@@ -61,40 +49,11 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
-    //获取所有分类
-    this.getTypeList()
 
-    //获取当前所在分类
-    let id = this.data.activeTypeId
-
-    //获取当前分类的
-    this.getGoodsList(id)
-
+    //获取当前分类的商品
+    this.getGoodsList(this.data.activeTypeId)
     
   },
- 
-  getTypeList:function(){
-    var that = this
-    // ---------加载所有分类-------------
-    wx.request({
-      url: app.globalData.apiServer + 'wxlistType/ ',
-      success: function (res) {
-        var categories = [{ id: 0, name: "全部" }];
-        console.log(res)
-        if (res.data.code == 0) {
-          for (var i = 0; i < res.data.data.length; i++) {
-            categories.push(res.data.data[i]);
-          }
-        }
-        that.setData({
-          typeCat: categories,
-          isShow: true
-        });
-        //console.log('当前分类为：', that.data.typeCat)
-      }
-    })
-  }
-  ,
   getGoodsList: function (categoryId, append) {
     // console.log(categoryId)
     if (categoryId == 0) {
@@ -113,7 +72,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method:'POST',
       success: function (res) {
-        //console.log('1',res)
+        console.log('1',res)
         if (res.data.code == 404 || res.data.code == 700) {
           that.setData({
              loadingMoreHidden: false 
@@ -131,12 +90,15 @@ Page({
           let goods = [];
           if (append) {
             goods = that.data.fruitInfo
-
+            
           }
+          
           for (var i = 0; i < res.data.data.length; i++) {
             goods.push(res.data.data[i]);
           }
+          console.log(goods)
           that.setData({
+            isShow:true,
             loadingMoreHidden: true,
             fruitInfo: goods,
           });
@@ -157,19 +119,11 @@ Page({
   },
 
   onPullDownRefresh: function () {
-    let that = this
-    wx.startPullDownRefresh({
-    })
-    this.setData({
-      curPage: 1
-    });
-    //console.log('111111111111111111111111111111111111')
-    this.getGoodsList(0)
+
   
   },
-  
-  lower: function (e) {
-    console.log(e)
+
+  onReachBottom: function () {
     if(this.data.loadingMoreHidden){
       let page = this.data.curPage + 1
       //console.log('当前页数',page)
@@ -193,7 +147,7 @@ Page({
     return {
       title: 'AO奥品汇',
       imageUrl: '../../images/icon/fruit.jpg',
-      path: '/pages/homepage/homepage'
+      path: '/pages/specialoffer/specialoffer'
     }
   }
 

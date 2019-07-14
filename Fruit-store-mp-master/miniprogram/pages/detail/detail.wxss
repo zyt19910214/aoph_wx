@@ -28,18 +28,14 @@ page {
 }
 
 .detail-info .line1 view {
-  height: 60px;
-  width: 100%px;
-    padding: 0 10px;
-   overflow: hidden;
+  width: 100%;
+  overflow: hidden;
   box-sizing: border-box;
-
   display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-
  
 }
 
@@ -52,8 +48,8 @@ page {
 }
 
 .detail-info .line2 .price {
-  margin-left: 16px;
-  font-size: 32rpx;
+  margin-left: 2px;
+  font-size: 30rpx;
   color: #ee6a50
   
 }
@@ -73,10 +69,14 @@ page {
   padding: 0rpx;
   margin-top: 10rpx;
   height: 900rpx;
+ 
 }
 .goods-content{
   margin-left: 10rpx;
   font-size: 25rpx;
+}
+.goods-tab-box{
+ margin-bottom:100rpx; 
 }
 
 /* 底部导航 */
@@ -103,7 +103,7 @@ page {
 }
 
 .detail-nav .cart image {
-  width: 75rpx;
+  width: 65rpx;
   height: 55rpx;
   margin: 10rpx 0 0 0rpx;
   padding: 0 13rpx 5rpx 19rpx;
@@ -128,6 +128,29 @@ page {
   height: 100%
 }
 
+.detail-nav .cart2 {
+  background-color: rgb(253, 173, 193);
+  width: 120rpx;
+  padding-top: 0rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.detail-nav .cart2 image {
+  width: 65rpx;
+  height: 55rpx;
+  margin: 10rpx 0 0 0rpx;
+  padding: 0 13rpx 5rpx 19rpx;
+}
+
+.detail-nav .cart2 view {
+  font-size: 18rpx;
+  height: 35rpx;
+  line-height: 30rpx;
+}
+
 
 
 /* 详细信息 */
@@ -140,7 +163,7 @@ page {
   border-bottom: 1rpx solid #ededed;
   box-sizing: border-box;
   font-size: 35rpx;
-  padding-left: 53rpx;
+  padding-left: 30rpx;
   color: #c7c7cb;
 }
 
@@ -151,4 +174,24 @@ page {
 
 .theDetail {
   padding: 40rpx;
+}
+/* 主页底部 */
+
+.homeBottom {
+  padding-bottom: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeBottom .bottomLine {
+  height: 1rpx;
+  width: 50rpx;
+  background: rgb(202, 201, 201);
+  margin: 0 15rpx;
+}
+
+.homeBottom .bottomWord {
+  font-size: 30rpx;
+  color: rgb(202, 201, 201);
 }

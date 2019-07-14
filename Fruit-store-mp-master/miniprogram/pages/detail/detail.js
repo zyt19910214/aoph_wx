@@ -14,65 +14,70 @@ Page({
 
   // 跳转收藏页面
   goToCart: function() {
-    // console.log('hhhh')
     wx.switchTab({
       url: '/pages/cart/cart',
+
     })
+    
   },
 
-
-
-
-  
   // ------------加入收藏------------
   addLoveByDetail: function (e) {
     wx.showLoading({
       title: '加载中',
     })
-    console.log(e)
-    this.isNotRepeteToLove({ id: e.currentTarget.dataset._id, _openid: this.data.openid })
+    var that = this;
+    wx.request({
+      url: app.globalData.apiServer + 'wxaddLove/',
+      data: {
+        id: e.currentTarget.dataset._id,
+        openid: app.globalData.openid
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
+      success: function (res) {
+        app.globalData.carts = true 
+        console.log(app.globalData.carts)
+        wx.hideLoading()
+        wx.showToast({
+          title: '许愿成功',
+        })
+        that.setData({
+          islove: true
+        });
+      }
+    })
+   
 
   },
 
 
   // 判断是否已收藏
   isNotRepeteToLove: function (item) {
+    var that = this;
 
-    app.getInfoWhere('love', { id: item.id, _openid: item._openid },
-      e => {
-        if (e.data.length != 0) {
+    wx.request({
+      url: app.globalData.apiServer+'wxisNotRepeteToLove/',
+      data: {
+        id: item.id,
+        openid: item._openid
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
+      success: function (res) {
+        //console.log('1',res)
+        if (res.data.code == 400) {
           wx.hideLoading()
-          wx.showToast({
-            title: '许过愿啦！',
-          })
-
-        } else {
-          // 保存收藏
-          app.addRowToSet('love', { id: item.id }, e1 => {
-            console.log(e1)
-
-            wx.request({
-              url: 'https://api.it120.cc/aoph/shop/goods/detail',
-              data: {
-                id: item.id
-              },
-              success: function (res) {
-
-                app.globalData.carts.push(res.data.data) // 进行动态的操作
-
-              }
-            })
-            wx.hideLoading()
-            wx.showToast({
-              title: '许愿成功',
-            })
-            this.setData({
-              islove: true
-            });
-          })
+         
+        } else {  
+          that.setData({
+            islove: false
+          });
         }
+
       }
-    )
+    })
+
   },
 
   // 详细信息切换
@@ -82,43 +87,39 @@ Page({
       curIndex: index
     })
   },
-
+  callPhone() {
+    wx.makePhoneCall({
+      phoneNumber: '15105390367',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
+    //console.log('23222.',e)
     wx.showLoading() 
 
-    app.getInfoWhere('love', { id: parseInt(e._id)}, res => {
-      if(res.data.length>0){
-        this.setData({
-          islove: true
-        })
-      }else{
-        this.setData({
-          islove: false
-        })
-        
-      }
-      
-    })
+    this.isNotRepeteToLove({ id: e._id, _openid: app.globalData.openid })
+
     var that = this
     wx.request({
-      url: 'https://api.it120.cc/aoph/shop/goods/detail',
+      url: app.globalData.apiServer + 'wxGoodDetail/ ',
       data: {
         id: e._id
       },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
       success: function (res) {
-        console.log(res)
-
+        //console.log('12',res)
         that.setData({
-         fruitDetail: res.data.data,
+          fruitDetail: res.data.data,
         });
         WxParse.wxParse('article', 'html', res.data.data.content, that, 5);
-        wx.hideLoading() 
+        wx.hideLoading()
       }
     })
+    
    
   },
 

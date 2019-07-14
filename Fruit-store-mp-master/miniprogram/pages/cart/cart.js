@@ -10,33 +10,30 @@ Page({
 
   onLoad(e) {
     // 页面初始化 options为页面跳转所带来的参数
-
     this.initEleWidth();
-
-    this.getlove()
+    
   },
 
   onShow() {
-   
-    let loves = app.globalData.carts
-    //console.log(loves.length)
-    if(loves.length>0){
-      this.setData({  
-        hasList:true,
-        carts: loves
-      })
-    }else{
+    console.log('加载收藏页！',app.globalData.carts)
+    
+    
+    if (app.globalData.carts ) {
       this.setData({
-        hasList: false,
+        hasList:true
       });
+      this.getlove();
     }
+    app.globalData.carts = false
+    
  
   },
 
 
   onHide: function () {
    
-  },
+  }, 
+
 
   touchS: function (e) {
 
@@ -132,7 +129,7 @@ Page({
       var index = e.currentTarget.dataset.index;
       console.log('ssss',index)
       var carts = this.data.carts;
-     
+      
       carts[index]['txtStyle'] = txtStyle;
       console.log(carts)
       //更新列表的状态
@@ -195,32 +192,42 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    console.log(e)
+    //console.log(e)
     const index = e.currentTarget.dataset.index;
-    console.log(index)
-    let carts = app.globalData.carts;
-    app.getInfoWhere('love', { id: e.currentTarget.dataset._id},e3=>{
+    console.log('index:', index)
+    var that = this;
+    let carts = that.data.carts;
 
-      app.deleteInfoFromSet('love', e3.data[0]['_id'],e4=>{
- 
+    wx.request({
+      url: app.globalData.apiServer + 'wxdellove/',
+      data: {
+        id: e.currentTarget.dataset._id,
+        openid: app.globalData.openid
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
+      success: function (res) {
+
         wx.showToast({
           title: '删除成功',
         })
         carts.splice(index, 1);
-        this.setData({
-          carts:carts
+        that.setData({
+          carts: carts
         });
-        app.globalData.carts = carts
+        app.globalData.carts = true
 
         if (!carts.length) {
-          this.setData({
+          that.setData({
             hasList: false
           });
         } else {
         }
-      })
-      })
-      
+
+
+      }
+    })
+
    
   },onPullDownRefresh: function () {
 
@@ -229,59 +236,51 @@ Page({
 
   getlove:function (e){
     let that = this
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-      app.getInfoWhere('love', {}, e => {
+    that.setData({
+      carts: []
+      });
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  
+    wx.request({
+      url: app.globalData.apiServer + 'wxgetloveList/',
+      data: {
+        openid: app.globalData.openid
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
+      success: function (res) {
         
-        //console.log(e.data)
-
-        for (let i = 0; i < e.data.length; i++) {
-          //console.log(e.data[i]['id'])
-          wx.request({
-            url: 'https://api.it120.cc/aoph/shop/goods/detail',
-            data: {
-              id: e.data[i]['id']
-            },
-            success: function (res) {
-              //console.log(res.data.data)
-              let details = app.globalData.carts
-              if (JSON.stringify(details).indexOf(JSON.stringify(res.data.data)) == -1) {
-                details.push(res.data.data) // 进行动态的操作
-              }
-              app.globalData.carts = details
-              that.setData({
-                carts:details
-              })
-            }
-          })
-        }
-        //console.log(e.data.length)
-        if (e.data.length == 0) {
+        if(res.data.data.length == 0){
+          wx.hideLoading();
           that.setData({
             hasList: false
           });
+        }else{
 
-        } else {
+          console.log('list_cats:', that.data.hasList)
           that.setData({
-            hasList: true,
+            carts :res.data.data
           });
-
+          //app.globalData.carts_list = res.data.data
+          // 进行动态的操作
+          //console.log('!!',app.globalData.carts);
+          
+          wx.hideLoading();
         }
+        
 
-        wx.hideLoading()
-    
-      })
+      }
+    })
     
 
    
   }
-
-
 
 
 

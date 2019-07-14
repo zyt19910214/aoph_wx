@@ -13,14 +13,30 @@ App({
 
     this.globalData = {
       cloudRoot : "clo140d-voyz-cloud-86f82a/",
+      apiServer:"http://127.0.0.1:8888/",
       tmpNum: 0,
       tempFilePaths: "",
-      carts:[],
+      carts:true,
+      carts_list: [],
       admin: ["oenS94lGcw7qyDo0AZ7uWBqeo0Lg"],
       openId: null,
       appid: 'wxeeaa3b96ec8f029c',
 
-    }
+    },
+    // 获取用户openid
+
+    wx.cloud.callFunction({
+      name: 'login',
+      complete: res => {
+        console.log('云函数login返回结果:', res)
+        var openid = res.result.openid;
+        console.log('云函数获取到的openid:', openid)
+        var that = this;
+        that.globalData.openid = openid
+      }
+    })
+    
+
   },
 
   // --------------常用----------------

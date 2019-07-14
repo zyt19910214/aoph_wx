@@ -1,5 +1,10 @@
 page {
   background-color: rgb(245, 249, 253);
+  height: 100%;
+}
+.myHomePage{
+  height: 100%;
+  overflow: hidden;
 }
 
 /* 轮播图 */
@@ -13,22 +18,33 @@ page {
   margin-top: 10rpx;
 }
 
+.Search-container{
+  display: block;
+  height: 10%;
+}
+.tilte-container{
+  display: block;
+  height: 5%;
+  text-align: center;
+}
 /* 分类选项卡 */
 
 .type-container {
   display: flex;
   justify-content: start;
-  padding: 5rpx 20rpx 0 20rpx;
+  /* padding: 5rpx 20rpx 0 20rpx; */
   position: relative;
-  top: -93rpx;
-  background: rgba(0, 0, 0, 0.137);
-  margin-top: 15rpx;
+  top: -23rpx;
+  /* background: rgba(0, 0, 0, 0.137); */
+  margin-top: 15rpx; 
+  width: 30%;
+  height: 90%;
 }
 
 .type-container .type-item {
-  width: 25%;
   height: 60rpx;
-  display: inline-block;
+  margin-top: 1px;
+  
 }
 .type-navbar{
   white-space: nowrap;
@@ -38,9 +54,15 @@ page {
   font-size: 25rpx;
   text-align: center;
   line-height: 60rpx;
-  border-radius: 10rpx 10rpx 0 0;
+  
+  /* border-radius: 10rpx 10rpx 0 0; */
   margin: 0 3rpx;
 }
+::-webkit-scrollbar
+{
+width: 1px;
+background-color: #dad3d5;
+} 
 
 .type-contain.type-container .type-item {
   width: 150rpx;
@@ -61,16 +83,6 @@ page {
   box-shadow: 3rpx grey;
 }
 
-/* 补偿条 */
-
-.extra {
-  height: 78rpx;
-  background-color: rgb(245, 249, 253);
-  width: 750rpx;
-  position: relative;
-  top: -93rpx;
-
-}
 
 /* 商品图 */
 
@@ -79,24 +91,28 @@ page {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 710rpx;
-  margin: 20rpx;
+  width: 70%;
+  height: 90%;
+  left: 30%;
   position: relative;
-  top: -173rpx;
+  top: -92%;
 }
 
 .fruit-item {
-  width: 345rpx;
+  width: 100%;
   overflow: hidden;
-  margin-bottom: 20rpx;
+  margin-bottom: 5rpx;
   background-color: white;
   box-shadow: 3.5rpx 3.5rpx 1rpx #d3d1d1;
+  height: 200rpx;
 }
 
 .fruit-item .fruit-image {
-  height: 320rpx;
-  width: 345rpx;
-  border: 1rpx;
+  height: 150rpx;
+  width: 150rpx;
+  float: left;
+  margin-top: 25rpx;
+  margin-left: 20rpx;
 }
 
 .fruit-item .fruit-image image {
@@ -105,15 +121,29 @@ page {
 }
 
 .fruit-item .fruit-info {
-  margin: 30rpx 0 30rpx 30rpx;
+  float: right;
+ width: 60%;
 }
 
-.fruit-item .fruit-info .name {
-  display: block;
-  font-size: 25rpx;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+.fruit-item .fruit-info .line1 {
+  width:90%;
+  height: 110rpx;
+  font-size: 23rpx;
+  margin-top: 20rpx;
+  text-align: right;
+}
+
+.fruit-item .fruit-info .line1 view {
+  width:100%;
+  overflow:hidden;
+  box-sizing:border-box;
+  display:-webkit-box;
+  white-space:pre-line;
+  word-break:break-all;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:4;
+
 }
 
 .fruit-item .fruit-info .line2 {
@@ -122,6 +152,9 @@ page {
   justify-content: space-between;
   padding-right: 20rpx;
   align-items: center;
+  width: 90%;
+  text-align: right;
+  
 }
 
 .fruit-item .fruit-info .line2 image {
@@ -141,10 +174,10 @@ page {
 }
 
 .fruit-item .fruit-info .price {
-  
   overflow: hidden;
   font-size: 24rpx;
   color:#e64340;
+  width: 100%;
 }
 
 .fruit-item .fruit-info .price .unit {
