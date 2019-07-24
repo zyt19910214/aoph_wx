@@ -1,5 +1,5 @@
 <view class='myHomePage' wx:if="{{isShow}}">
-  <view class ="spe">今日特价</view>
+  <view class ="spe">特价商品</view>
   
   <!-- 商品图 -->
   <view class='fruit-container'>

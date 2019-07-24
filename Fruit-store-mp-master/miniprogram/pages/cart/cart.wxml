@@ -16,7 +16,7 @@
     <view class="cart-box">
       <!-- 商品卡片 -->
       <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
-        <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
+        <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}} " class="inner txt" wx:if="{{item.origin_price>0}}">
           <!-- 商品图片 -->
           <navigator url="../detail/detail?_id={{item.id}}">
             <image class="cart-thumb" src="{{item.img_url}}"></image>
@@ -24,7 +24,20 @@
           <!-- 名称 -->
           <view class="cart-pro-name">{{item.name}}</view>
           <!-- 价格 -->
-          <text class="cart-pro-price">￥{{item.price}}</text>
+          <text class="cart-pro-price">￥{{item.origin_price}}/元</text>
+           <!-- 状态 -->
+          <text class="cart-pro-status" style='background-color:rgb(253, 173, 193); color: white;  padding:6rpx 6rpx 6rpx 6rpx'>特价在售</text>
+        </view>
+
+         <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt" wx:else>
+          <!-- 商品图片 -->
+          <navigator url="../detail/detail?_id={{item.id}}">
+            <image class="cart-thumb" src="{{item.img_url}}"></image>
+          </navigator>
+          <!-- 名称 -->
+          <view class="cart-pro-name">{{item.name}}</view>
+          <!-- 价格 -->
+          <text class="cart-pro-price">￥{{item.price}}/元</text>
            <!-- 状态 -->
           <text class="cart-pro-status">在售</text>
         </view>

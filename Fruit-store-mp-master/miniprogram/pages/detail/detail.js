@@ -9,7 +9,8 @@ Page({
   data: {
     fruitDetail: {}, //商品详情
     curIndex: 0,
-    islove:true
+    islove:true,
+    shareid:''
   },
 
   // 跳转收藏页面
@@ -103,6 +104,9 @@ Page({
     this.isNotRepeteToLove({ id: e._id, _openid: app.globalData.openid })
 
     var that = this
+    that.setData({
+      shareid: e._id
+    });
     wx.request({
       url: app.globalData.apiServer + 'wxGoodDetail/ ',
       data: {
@@ -115,6 +119,7 @@ Page({
         that.setData({
           fruitDetail: res.data.data,
         });
+        
         WxParse.wxParse('article', 'html', res.data.data.content, that, 5);
         wx.hideLoading()
       }
@@ -169,6 +174,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.fruitDetail.basicInfo['name']+' 这款商品超级棒！快来看看吧～，联系客服享更多优惠哦！',
+      imageUrl: this.data.fruitDetail.basicInfo['pic'],
+      path: 'pages/detail/detail?_id=' + this.data.shareid,
+    }
   }
 })

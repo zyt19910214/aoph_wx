@@ -56,6 +56,7 @@ page {
 
 .detail-info .line2 .purchaseFreq {
   padding-top: 9rpx;
+  
 }
 
 .detail-info .line2 .iLike {

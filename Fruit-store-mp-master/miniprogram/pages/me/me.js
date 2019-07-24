@@ -34,8 +34,8 @@ Page({
     })
   }, onShareAppMessage: function () {
     return {
-      title: 'AO奥品汇',
-      imageUrl: '../../images/icon/fruit.jpg',
+      title: 'Aus澳品汇 这家店真心不错,看看有没有自己想要的。品质消费，好而不贵！',
+      imageUrl: '../../images/icon/title.png',
       path: '/pages/homepage/homepage'
     }
   }, onPullDownRefresh: function () {

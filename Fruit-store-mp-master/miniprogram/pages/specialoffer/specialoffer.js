@@ -64,7 +64,7 @@ Page({
     wx.request({
       url: app.globalData.apiServer + 'wxlistGood/',
       data: {
-        categoryId: categoryId,
+        categoryId: -1,
         nameLike: '',
         page:that.data.curPage,
         pageSize: that.data.pageSize
@@ -145,8 +145,8 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: 'AO奥品汇',
-      imageUrl: '../../images/icon/fruit.jpg',
+      title: 'Aus澳品汇特价商品，快来看看吧！',
+      imageUrl: '../../images/icon/title.png',
       path: '/pages/specialoffer/specialoffer'
     }
   }

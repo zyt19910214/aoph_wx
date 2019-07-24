@@ -263,7 +263,7 @@ Page({
           });
         }else{
 
-          console.log('list_cats:', that.data.hasList)
+          console.log('list_cats:', res.data.data)
           that.setData({
             carts :res.data.data
           });

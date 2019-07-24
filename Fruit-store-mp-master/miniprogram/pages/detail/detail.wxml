@@ -14,9 +14,12 @@
       <view>{{fruitDetail.basicInfo.name}}</view>
     </view>
     <!-- 第二行 -->
-    <view class='line2'>
+    <view class='line2' wx:if="{{fruitDetail.basicInfo.originalPrice>0}}">
+      <view class='price'>特价中！ {{fruitDetail.basicInfo.originalPrice}}元</view>
+      <view class='purchaseFreq' > 原价{{fruitDetail.basicInfo.minPrice}}元</view>
+    </view>
+    <view class='line2' wx:else>
       <view class='price'>{{fruitDetail.basicInfo.minPrice}}元</view>
-      <!-- <view class='purchaseFreq'>浏览 {{fruitDetail.basicInfo.views}} 次</view> -->
     </view>
   </view>
 
