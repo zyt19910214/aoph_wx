@@ -7,7 +7,8 @@
     "pages/bgInfo/bgInfo",
     "pages/cart/cart",
     "pages/me/me",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/searchInfo/searchInfo"
   ],
   
   "window": {

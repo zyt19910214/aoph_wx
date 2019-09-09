@@ -1,0 +1,123 @@
+page {
+  background-color: rgb(245, 249, 253);
+}
+.Search-container{
+  display: block;
+  height: 9%;
+}
+.spe{
+  height: 78rpx;
+  width: 750rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: rgb(253, 173, 193);
+  font-size: 21px;
+}
+.spe1{
+  height: 78rpx;
+  width: 750rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: rgb(253, 173, 193);
+  font-size: 21px;
+  margin-top:60%;
+}
+
+/* 商品图 */
+
+.fruit-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 710rpx;
+  margin: 20rpx;
+  position: relative;
+  top: -23rpx;
+}
+
+.fruit-item {
+  width: 345rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  background-color: white;
+  box-shadow: 3.5rpx 3.5rpx 1rpx #d3d1d1;
+}
+
+.fruit-item .fruit-image {
+  height: 320rpx;
+  width: 345rpx;
+  border: 1rpx;
+}
+
+.fruit-item .fruit-image image {
+  height: 100%;
+  width: 100%;
+}
+
+.fruit-item .fruit-info {
+  margin: 30rpx 0 30rpx 30rpx;
+}
+
+.fruit-item .fruit-info .name {
+  display: block;
+  font-size: 25rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fruit-item .fruit-info .line2 {
+  display: flex;
+  margin-top: 10rpx;
+  justify-content: space-between;
+  padding-right: 20rpx;
+  align-items: center;
+}
+
+
+.fruit-item .fruit-info .sc {
+  width: 80rpx;
+  height: 70rpx;
+  position: relative;
+  top: 25rpx;
+  left: 40rpx;
+  font-size: 18rpx;
+}
+
+.fruit-item .fruit-info .price {
+  
+  overflow: hidden;
+  font-size: 24rpx;
+  color:#e64340;
+}
+
+.fruit-item .fruit-info .price .unit {
+  font-size: 20rpx;
+}
+
+.fruit-item .fruit-info image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 主页底部 */
+
+.homeBottom {
+  padding-bottom: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeBottom .bottomLine {
+  height: 1rpx;
+  width: 50rpx;
+  background: rgb(202, 201, 201);
+  margin: 0 15rpx;
+}
+
+.homeBottom .bottomWord {
+  font-size: 30rpx;
+  color: rgb(202, 201, 201);
+}

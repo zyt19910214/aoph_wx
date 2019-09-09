@@ -5,6 +5,7 @@ page {
 .myHomePage{
   height: 100%;
   overflow: hidden;
+  background-color: white;
 }
 
 /* 轮播图 */
@@ -27,6 +28,8 @@ page {
   height: 5%;
   text-align: center;
 }
+
+
 
 
 /* 公告 */
@@ -57,16 +60,13 @@ page {
   justify-content: start;
   /* padding: 5rpx 20rpx 0 20rpx; */
   position: relative;
-  top: -23rpx;
-  /* background: rgba(0, 0, 0, 0.137); */
-  margin-top: 15rpx; 
   width: 30%;
-  height: 90%;
+  height: 86%;
+  margin-top: 5rpx;
 }
 
 .type-container .type-item {
-  height: 60rpx;
-  margin-top: 1px;
+  height: 80rpx;
   
 }
 .type-navbar{
@@ -76,14 +76,15 @@ page {
 .type-container .type-item view {
   font-size: 25rpx;
   text-align: center;
-  line-height: 60rpx;
+  line-height: 80rpx;
   
   /* border-radius: 10rpx 10rpx 0 0; */
   margin: 0 3rpx;
 }
 ::-webkit-scrollbar
 {
-width: 1px;
+ width: 0px;
+  height: 0px;
 background-color: #dad3d5;
 } 
 
@@ -95,14 +96,14 @@ background-color: #dad3d5;
 .type-container .type-item view {
   font-size: 25rpx;
   text-align: center;
-  line-height: 60rpx;
+  line-height: 80rpx;
   background-color: rgb(253, 173, 193);
   color: rgb(255, 255, 255);
 }
 
 .type-container .type-item .type-item-on {
-  background-color: rgb(248, 71, 115);
-  color: white;
+  background-color:white;
+  color: rgb(248, 71, 115);
   box-shadow: 3rpx grey;
 }
 
@@ -115,10 +116,11 @@ background-color: #dad3d5;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 70%;
-  height: 90%;
+  height: 86%;
   left: 30%;
   position: relative;
-  top: -92%;
+  top: -86%;
+  margin-left: 15rpx;
 }
 
 .fruit-item {
@@ -180,13 +182,7 @@ background-color: #dad3d5;
   
 }
 
-.fruit-item .fruit-info .line2 image {
-  width: 80rpx;
-  height: 70rpx;
-  position: relative;
-  top: -8rpx;
-  left: 45rpx;
-}
+
 .fruit-item .fruit-info .sc {
   width: 80rpx;
   height: 70rpx;

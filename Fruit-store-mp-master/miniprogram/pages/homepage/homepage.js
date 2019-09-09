@@ -55,7 +55,18 @@ Page({
 
   // ------------生命周期函数------------
   onLoad: function (options) {
-   
+    // 页面显示
+    var vm = this;
+    vm.get_ad()
+    var length = vm.data.text.length * vm.data.size;//文字长度
+    var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
+    vm.setData({
+      length: length,
+      windowWidth: windowWidth,
+      marquee2_margin: length < windowWidth ? windowWidth - length : vm.data.marquee2_margin//当文字长度小于屏幕长度时，需要增加补白
+    });
+
+    vm.run1();// 水平一行字滚动完了再按照原来的方向滚动
   },
 
   onReady: function () {
@@ -73,18 +84,7 @@ Page({
       complete: function(res) {},
     })
 
-    // 页面显示
-    var vm = this;
-    vm.get_ad()
-    var length = vm.data.text.length * vm.data.size;//文字长度
-    var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
-    vm.setData({
-      length: length,
-      windowWidth: windowWidth,
-      marquee2_margin: length < windowWidth ? windowWidth - length : vm.data.marquee2_margin//当文字长度小于屏幕长度时，需要增加补白
-    });
-    
-    vm.run1();// 水平一行字滚动完了再按照原来的方向滚动
+   
     
     //获取所有分类
     this.getTypeList()
